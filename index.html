@@ -561,7 +561,6 @@
                             <div class="flex items-center gap-3">
                                 <div class="w-9 h-9 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center font-bold">${step.num}</div>
                                 <div class="flex-1">
-                                    <p class="text-xs uppercase tracking-wide text-slate-500">Krok ${step.num}</p>
                                     <p class="text-sm font-semibold text-slate-900">${step.title}</p>
                                 </div>
                                 <i class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform ${index === 0 ? 'rotate-180' : ''}"></i>
@@ -628,7 +627,7 @@
                 <div class="flex items-start gap-6">
                     <div class="text-6xl font-black text-slate-200 leading-none hidden md:block">${data.num}</div>
                     <div>
-                        <h3 class="text-2xl font-bold text-slate-800 mb-3">Fáze ${data.num}: ${data.title}</h3>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-3">${data.title}</h3>
                         <p class="text-lg text-slate-600 leading-relaxed">${data.desc}</p>
                     </div>
                 </div>
