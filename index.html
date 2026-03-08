@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUTO STILO | Výrobní Kooperace a Outsourcing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chosen Palette: Industriální Důvěra (Slate, Modrá, Bílá). Pozadí: bg-slate-50, Text: text-slate-800, Akcenty: text-blue-600/bg-blue-600. Zvoleno pro profesionální, stabilní a čistý B2B vzhled odpovídající průmyslovému outsourcingu. -->
+    <!-- Application Structure Plan: Aplikace je navržena jako jednostránkový interaktivní B2B dashboard/prezentace. 1. Hero sekce pro okamžité pochopení hodnoty. 2. Interaktivní sekce "Tradiční vs. Náš model" (graf nákladů) pro vizualizaci úspor. 3. Interaktivní tabulkový prohlížeč služeb pro detailní průzkum nabízených činností. 4. Dynamický krokový průvodce procesem spolupráce. 5. Přehled benefitů a ESG přesah. 6. Kontaktní formulář. Tato struktura plynule provádí uživatele od identifikace problému (nedostatek lidí) přes logické řešení (data a služby) až po konverzi (kontakt). -->
+    <!-- Visualization & Content Choices: 1. Porovnání nákladů (Chart.js Bar Chart) -> Cíl: Porovnat skryté náklady kmenového zaměstnance vs. transparentní platbu za dílo u AUTO STILO. Zvolen skládaný sloupcový graf pro jasnou vizualizaci eliminace HR a mzdové agendy. 2. Proces kooperace (Interaktivní kroky - Vanilla JS) -> Cíl: Organizovat informace o postupu spolupráce. Zvolen klikací flow-diagram pomocí HTML/Tailwind, aby se uživatel nebál složitosti procesu. 3. Služby (Dynamické karty - Vanilla JS) -> Cíl: Informovat o detailech služeb bez zahlcení textem. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .tab-btn.active {
+            background-color: #1d4ed8 !important;
+            color: #ffffff !important;
+            border-color: #1d4ed8 !important;
+            box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
+        }
+
+        .tab-btn {
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+        }
+
+        .tab-btn:hover:not(.active) {
+            transform: translateY(-2px);
+            border-color: #93c5fd;
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+            background-color: #f8fafc;
+        }
+
+        .tab-btn.active span {
+            color: inherit !important;
+        }
+
+        .tab-btn.active span:last-child {
+            opacity: 0.9;
+        }
+
+        .service-mobile-track {
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .service-mobile-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .service-mobile-card {
+            scroll-snap-align: start;
+            min-width: 85%;
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+        }
+
+        .service-mobile-card.active {
+            border-color: #1d4ed8;
+            background-color: #eff6ff;
+            box-shadow: 0 10px 22px rgba(29, 78, 216, 0.18);
+        }
+
+        .process-mobile-item {
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+        }
+
+        .process-mobile-item.active {
+            border-color: #1d4ed8;
+            background-color: #eff6ff;
+            box-shadow: 0 10px 22px rgba(29, 78, 216, 0.16);
+        }
+
+        .process-mobile-detail {
+            border-top: 1px solid #bfdbfe;
+        }
+
+        .step-btn.active {
+            background-color: #1e293b;
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body class="text-slate-800 antialiased">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <img src="imgs/logo.svg" alt="AUTO STILO Logo" class="h-16 w-auto">
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#sluzby" class="text-slate-600 hover:text-blue-600 font-medium transition">Naše Služby</a>
+                    <a href="#proces" class="text-slate-600 hover:text-blue-600 font-medium transition">Jak to
+                        funguje</a>
+                    <a href="#benefity" class="text-slate-600 hover:text-blue-600 font-medium transition">Benefity &
+                        ESG</a>
+                    <a href="#kontakt"
+                        class="bg-blue-600 text-white px-5 py-2.5 rounded-md font-semibold hover:bg-blue-700 transition shadow-sm">Poptat
+                        kapacity</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-white py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-200">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 relative z-10">
+            <div class="md:w-1/2 text-left">
+                <h1
+                    class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                    Chybí vám operátoři do výroby? <br>
+                    <span class="text-blue-600">Uvolněte si ruce</span> s externími kapacitami.
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed font-light">
+                    AUTO STILO je váš stabilní partner pro výrobní kooperaci a outsourcing manuálních procesů. Přebíráme
+                    montáže, kompletace a dočišťování. Získejte stabilní výkon bez personálních starostí a skrytých
+                    HR nákladů.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#kontakt"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition shadow-lg transform hover:-translate-y-1 text-center">
+                        Ověřit volné kapacity
+                    </a>
+                    <a href="#sluzby"
+                        class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold py-4 px-8 rounded-lg text-lg transition text-center">
+                        Naše služby
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 relative">
+                <div class="absolute -top-6 -left-6 w-44 h-44 bg-blue-100 rounded-full blur-3xl opacity-70"></div>
+                <div class="absolute -bottom-8 -right-8 w-56 h-56 bg-slate-200 rounded-full blur-3xl opacity-60"></div>
+
+                <div class="relative rounded-3xl overflow-hidden border border-slate-200 bg-slate-900 shadow-2xl ring-1 ring-slate-200/70">
+                    <img src="imgs/operator_ve_vyrobe.jpg" alt="Operátor ve výrobě"
+                        class="w-full h-[420px] md:h-[500px] object-cover object-center md:object-[center_35%]">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-transparent to-transparent"></div>
+                </div>
+
+                <div
+                    class="absolute bottom-5 left-5 bg-white/95 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg border border-slate-200/80">
+                    <p class="text-xs uppercase tracking-wide text-slate-500 font-semibold">Monitorovaný provoz</p>
+                    <p class="text-sm text-slate-900 font-bold">Stabilní kvalita výstupu</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="sluzby" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Naše služby: Jaké procesy pro vás
+                    převezmeme</h2>
+                <!-- <p class="text-lg text-slate-600 max-w-3xl">
+                    Nedostatek personálu brzdí váš růst. Prozkoumejte interaktivní přehled níže a zjistěte, jaké
+                    repetitivní a na lidskou sílu náročné úkony můžete okamžitě převést na naše dedikované týmy
+                    operátorů.
+                </p> -->
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="lg:hidden">
+                    <p class="text-sm text-slate-600 mb-3">Posuňte do stran a vyberte službu:</p>
+                    <div id="service-mobile-slider" class="service-mobile-track flex gap-3 overflow-x-auto pb-2 -mx-1 px-1">
+                    </div>
+                    <div id="service-mobile-dots" class="flex items-center justify-center gap-2 mt-3"></div>
+                </div>
+
+                <div class="lg:w-1/3 hidden lg:flex flex-col gap-3" id="service-tabs">
+                </div>
+                <div class="lg:w-2/3 bg-white rounded-xl shadow-md border border-slate-200 p-6 md:p-8 min-h-[320px] lg:min-h-[350px] flex flex-col justify-center transition-all duration-300"
+                    id="service-content">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proces" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Jak kooperace probíhá (Krok za krokem)
+                </h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                    Náš proces je nastaven tak, aby vaši firmu maximálně odlehčil. Práci realizujeme v našich
+                    vyhrazených a nepřetržitě monitorovaných prostorech pod přísnou kontrolou kvality. Klikněte na
+                    jednotlivé kroky pro detailní informace.
+                </p>
+            </div>
+
+            <div class="md:hidden mb-8">
+                <!-- <p class="text-sm text-slate-600 mb-3">Vyberte krok a detail se zobrazí přímo pod ním:</p> -->
+                <div id="process-mobile-slider" class="space-y-3">
+                </div>
+            </div>
+
+            <div class="relative hidden md:block">
+                <div class="absolute top-1/2 left-0 w-full h-1 bg-slate-200 -translate-y-1/2 z-0"></div>
+                <div class="flex flex-row justify-between relative z-10 gap-4" id="process-steps">
+                </div>
+            </div>
+
+            <div class="hidden md:block mt-12 bg-slate-50 border border-slate-200 rounded-xl p-8 shadow-sm" id="process-detail">
+            </div>
+        </div>
+    </section>
+
+    <section id="benefity" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Proč zvolit kooperaci s AUTO STILO</h2>
+                <p class="text-lg text-slate-300 max-w-3xl mx-auto">
+                    Nejsme personální agentura. Nedodáváme vám „hlavy“, ale garantujeme hotové dílo. Zde jsou klíčové
+                    argumenty, proč náš outsourcingový model transformuje vaši efektivitu.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div
+                    class="bg-slate-800 rounded-xl p-8 border border-slate-700 hover:border-blue-500 transition-colors">
+                    <div class="text-4xl text-blue-400 mb-4"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="text-xl font-bold mb-3"> Stabilita a nulová fluktuace</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Náš tým operátorů je stabilní. Nehrozí vám výpadky výroby kvůli nečekaným nemocenským
+                        nebo odchodům zaměstnanců ke konkurenci. Práce běží přesně podle vašeho plánu.
+                    </p>
+                </div>
+                <div
+                    class="bg-slate-800 rounded-xl p-8 border border-slate-700 hover:border-blue-500 transition-colors">
+                    <div class="text-4xl text-blue-400 mb-4"><i class="fa-solid fa-coins"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Platba za výsledek, ne za čas</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Ošetříte své výrobní náklady. Platíte pouze dohodnutou cenu za zkompletovaný kus nebo splněnou
+                        normu. Neřešíte odvody, placenou dovolenou, neschopenky ani drahé prostoje.
+                    </p>
+                </div>
+                <div
+                    class="bg-slate-800 rounded-xl p-8 border border-slate-700 hover:border-blue-500 transition-colors">
+                    <div class="text-4xl text-blue-400 mb-4"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Okamžitá škálovatelnost</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Máte náhlou kapacitní špičku nebo nečekanou velkou zakázku? Dokážeme velmi rychle vyčlenit,
+                        zaškolit a nasadit dedikovaný tým operátorů přesně pro váš specifický projekt.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="bg-blue-900/50 border border-blue-500/30 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-2/3">
+                    <h3 class="text-2xl font-bold mb-3 text-white">Garance kvality a společenská odpovědnost (ESG)</h3>
+                    <p class="text-blue-100 mb-4">
+                        Zakládáme si na preciznosti, ochraně vašeho know-how a bezpečnosti svěřeného majetku. Naše
+                        provozy podléhají přísným bezpečnostním standardům.
+                    </p>
+                    <p class="text-blue-200 font-medium">
+                        <span class="text-white font-bold">Bonus pro vaše korporátní cíle:</span> Spoluprací s AUTO STILO
+                        získáváte nejen spolehlivého dodavatele, ale také silného partnera pro plnění vašich cílů v
+                        oblasti společenské odpovědnosti firem (CSR) a ESG reportingu.
+                    </p>
+                </div>
+                <div class="md:w-1/3 flex justify-center text-8xl text-blue-500/20">
+                    <i class="fa-solid fa-handshake"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-100">
+        <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+            <div class="md:w-5/12 bg-blue-600 text-white p-10 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">Hledáte spolehlivého partnera?</h2>
+                    <p class="text-blue-100 mb-8 leading-relaxed">
+                        Nenechte své zakázky stát. Spojte se s námi a zjistěte, jaké možnosti
+                        výrobní kooperace můžeme nabídnout právě vám.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <span class="text-2xl text-blue-300"><i class="fa-solid fa-phone"></i></span>
+                            <div>
+                                <p class="text-sm text-blue-200">Telefon</p>
+                                <p class="font-semibold text-lg">+420 XXX XXX XXX</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="text-2xl text-blue-300"><i class="fa-solid fa-envelope"></i></span>
+                            <div>
+                                <p class="text-sm text-blue-200">E-mail</p>
+                                <p class="font-semibold text-lg">info@autostilo.eu</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="text-2xl text-blue-300"><i class="fa-solid fa-building"></i></span>
+                            <div>
+                                <p class="text-sm text-blue-200">Sídlo firmy</p>
+                                <p class="font-semibold text-lg">Salaš 96, 763 51 Zlín</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="mt-12 pt-8 border-t border-blue-500/50">
+                    <p class="text-sm text-blue-200">AUTO STILO - Rychlé řešení za atraktivní náklady.</p>
+                </div> -->
+            </div>
+
+            <div class="md:w-7/12 p-10">
+                <h3 class="text-2xl font-bold text-slate-800 mb-6">Nezávazná poptávka kapacit</h3>
+                <form id="contactForm" class="space-y-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Jméno a Příjmení</label>
+                            <input type="text"
+                                class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                placeholder="Jan Novák" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Společnost</label>
+                            <input type="text"
+                                class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                placeholder="Název vaší firmy" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Telefon / E-mail</label>
+                        <input type="text"
+                            class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-blue-500 focus:border-blue-500 outline-none"
+                            placeholder="Kontakt na vás" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Typ poptávané kooperace</label>
+                        <select
+                            class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-blue-500 focus:border-blue-500 outline-none bg-white">
+                            <option>Manuální montáž a kompletace</option>
+                            <option>Dočišťování a úpravy (Rework)</option>
+                            <option>Balení, přebalování a co-packing</option>
+                            <option>Jiné (specifikuji v poznámce)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Poznámka / Detaily</label>
+                        <textarea rows="3"
+                            class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-blue-500 focus:border-blue-500 outline-none"
+                            placeholder="Stručný popis objemu práce, časový rámec atd."></textarea>
+                    </div>
+                    <button type="button" onclick="alert('Demo verze: Formulář by nyní odeslal data.')"
+                        class="w-full bg-slate-900 text-white font-bold py-3 px-4 rounded-md hover:bg-slate-800 transition duration-300">
+                        Odeslat nezávaznou poptávku
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-slate-400 py-8 text-center text-sm border-t border-slate-800">
+        <p>&copy; 2026 AUTO STILO s.r.o. Všechna práva vyhrazena. | Spolehlivý partner pro výrobní kooperaci.</p>
+    </footer>
+
+    <script>
+        const servicesData = [
+            {
+                id: 'montaz',
+                icon: '<i class="fa-solid fa-screwdriver-wrench text-blue-600"></i>',
+                title: 'Manuální montáže a kompletace',
+                shortDesc: 'Sestavování produktů z více dílů.',
+                fullDesc: 'Profesionální sestavování produktů z více dílů, přesné lepení, skládání a nýtování. Naše kapacita je ideální řešení pro automotive, elektro průmysl, hračkářský průmysl nebo spotřební zboží, kde je vyžadována vysoká manuální zručnost a pečlivost.',
+                benefits: ['Zrychlení finální fáze výroby', 'Přísná kontrola zmetkovitosti', 'Snížení nákladů na montážní linku']
+            },
+            {
+                id: 'rework',
+                icon: '<i class="fa-solid fa-magnifying-glass text-blue-600"></i>',
+                title: 'Dočišťování a úpravy (Rework)',
+                shortDesc: 'Začišťování, kontrola kvality a třídění.',
+                fullDesc: 'Detailní začišťování plastových výlisků, odstraňování otřepů po lisování, vizuální a mechanická kontrola kvality a přesné třídění dílů. Zachráníme vaši produkci před zmetky a připravíme polotovary pro další bezproblémové zpracování.',
+                benefits: ['Důkladná výstupní kontrola', 'Záchrana cenného materiálu', 'Úleva pro vaše interní techniky']
+            },
+            {
+                id: 'baleni',
+                icon: '<i class="fa-solid fa-box-open text-blue-600"></i>',
+                title: 'Balení, přebalování a co-packing',
+                shortDesc: 'Kompletace dárkových balení a paletizace.',
+                fullDesc: 'Komplexní balící služby zahrnující kompletaci dárkových a promo balení, přesné vkládání tištěných návodů a letáků, štítkování produktů, polepy a finální příprava boxů na bezpečnou paletizaci a expedici.',
+                benefits: ['Rychlé odbavení marketingových kampaní', 'Precizní vizuální podoba balení', 'Logistická připravenost']
+            }
+        ];
+
+        const serviceTabsContainer = document.getElementById('service-tabs');
+        const serviceContentContainer = document.getElementById('service-content');
+        const serviceMobileSlider = document.getElementById('service-mobile-slider');
+        const serviceMobileDots = document.getElementById('service-mobile-dots');
+
+        function renderServices() {
+            servicesData.forEach((srv, index) => {
+                const btn = document.createElement('button');
+                btn.className = `tab-btn w-full text-left px-6 py-4 rounded-lg border border-slate-200 bg-white font-medium hover:bg-slate-50 transition-all flex flex-col ${index === 0 ? 'active' : ''}`;
+                btn.onclick = () => selectService(index);
+                btn.innerHTML = `
+                    <span class="text-xl mb-1">${srv.icon} ${srv.title}</span>
+                    <span class="text-sm font-normal opacity-80">${srv.shortDesc}</span>
+                `;
+                serviceTabsContainer.appendChild(btn);
+
+                if (serviceMobileSlider) {
+                    const mobileCard = document.createElement('button');
+                    mobileCard.className = `service-mobile-card shrink-0 text-left rounded-xl border border-slate-200 bg-white p-4 ${index === 0 ? 'active' : ''}`;
+                    mobileCard.dataset.index = String(index);
+                    mobileCard.onclick = () => selectService(index);
+                    mobileCard.innerHTML = `
+                        <div class="text-lg font-semibold text-slate-900 mb-1">${srv.icon} ${srv.title}</div>
+                        <div class="text-sm text-slate-600">${srv.shortDesc}</div>
+                    `;
+                    serviceMobileSlider.appendChild(mobileCard);
+                }
+
+                if (serviceMobileDots) {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.dataset.index = String(index);
+                    dot.setAttribute('aria-label', `Přejít na službu ${index + 1}`);
+                    dot.className = `h-2.5 w-2.5 rounded-full transition-all ${index === 0 ? 'bg-blue-600 w-6' : 'bg-slate-300'}`;
+                    dot.onclick = () => selectService(index);
+                    serviceMobileDots.appendChild(dot);
+                }
+            });
+
+            if (serviceMobileSlider) {
+                let scrollTimeout;
+                serviceMobileSlider.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        const cards = [...serviceMobileSlider.querySelectorAll('.service-mobile-card')];
+                        if (!cards.length) return;
+
+                        const sliderRect = serviceMobileSlider.getBoundingClientRect();
+                        const sliderCenter = sliderRect.left + (sliderRect.width / 2);
+
+                        let closestIndex = 0;
+                        let minDistance = Number.POSITIVE_INFINITY;
+
+                        cards.forEach((card, idx) => {
+                            const rect = card.getBoundingClientRect();
+                            const center = rect.left + (rect.width / 2);
+                            const distance = Math.abs(center - sliderCenter);
+                            if (distance < minDistance) {
+                                minDistance = distance;
+                                closestIndex = idx;
+                            }
+                        });
+
+                        selectService(closestIndex, false);
+                    }, 90);
+                });
+            }
+
+            selectService(0, false);
+        }
+
+        function selectService(index, scrollMobile = true) {
+            const btns = serviceTabsContainer.querySelectorAll('.tab-btn');
+            btns.forEach((b, i) => {
+                if (i === index) {
+                    b.classList.add('active');
+                } else {
+                    b.classList.remove('active');
+                }
+            });
+
+            if (serviceMobileSlider) {
+                const cards = serviceMobileSlider.querySelectorAll('.service-mobile-card');
+                cards.forEach((card, i) => {
+                    card.classList.toggle('active', i === index);
+                });
+
+                if (scrollMobile) {
+                    const activeCard = cards[index];
+                    if (activeCard) {
+                        activeCard.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+                    }
+                }
+            }
+
+            if (serviceMobileDots) {
+                const dots = serviceMobileDots.querySelectorAll('button');
+                dots.forEach((dot, i) => {
+                    dot.className = `h-2.5 rounded-full transition-all ${i === index ? 'bg-blue-600 w-6' : 'bg-slate-300 w-2.5'}`;
+                });
+            }
+
+            updateServiceContent(index);
+        }
+
+        function updateServiceContent(index) {
+            const data = servicesData[index];
+            let benefitsHtml = data.benefits.map(b => `<li class="flex items-center gap-2"><span class="text-green-500">✓</span> ${b}</li>`).join('');
+
+            serviceContentContainer.innerHTML = `
+                <div class="text-5xl mb-6 opacity-80">${data.icon}</div>
+                <h3 class="text-3xl font-bold text-slate-900 mb-4">${data.title}</h3>
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed">${data.fullDesc}</p>
+                <div class="bg-slate-50 rounded-lg p-6 border border-slate-100">
+                    <h4 class="font-bold text-slate-800 mb-3 uppercase text-sm tracking-wider">Klíčové přínosy této kooperace</h4>
+                    <ul class="space-y-2 text-slate-700 font-medium">
+                        ${benefitsHtml}
+                    </ul>
+                </div>
+            `;
+        }
+
+        const processData = [
+            {
+                num: '1',
+                title: 'Analýza a vzorkování',
+                desc: 'Zašlete nám referenční vzorky, výkresovou dokumentaci a požadované normy kvality. My v krátkém čase provedeme časový snímek operace a transparentně naceníme úkon za konkrétní kus.'
+            },
+            {
+                num: '2',
+                title: 'Logistika',
+                desc: 'Materiál či polotovary přivezete do našich maximálně zabezpečených a vyhrazených externích prostor. V případě potřeby jsme schopni logistický svoz zajistit naší vlastní dopravou.'
+            },
+            {
+                num: '3',
+                title: 'Zpracování a kontrola',
+                desc: 'Naši dedikovaní operátoři odvedou sjednanou práci přesně v dohodnutém termínu. Kvalitu, dodržování norem a postupů průběžně a striktně hlídají naši interní kontroloři.'
+            },
+            {
+                num: '4',
+                title: 'Expedice hotového díla',
+                desc: 'Odesíláme precizně zpracované, zkontrolované a bezpečně zabalené hotové dílo zpět do vaší výrobní linky, nebo (po dohodě) přímo k vašemu koncovému zákazníkovi.'
+            }
+        ];
+
+        const processStepsContainer = document.getElementById('process-steps');
+        const processMobileSlider = document.getElementById('process-mobile-slider');
+        const processDetailContainer = document.getElementById('process-detail');
+
+        function renderProcess() {
+            processData.forEach((step, index) => {
+                const stepEl = document.createElement('button');
+                stepEl.className = `step-btn flex-1 bg-white border-2 border-slate-200 rounded-xl p-4 flex items-center gap-4 transition-all duration-300 hover:border-slate-400 ${index === 0 ? 'active border-slate-900 shadow-md' : ''}`;
+                stepEl.onclick = () => selectProcess(index);
+                stepEl.innerHTML = `
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg bg-slate-100 step-num transition-colors">${step.num}</div>
+                    <div class="text-left font-semibold">${step.title}</div>
+                `;
+                processStepsContainer.appendChild(stepEl);
+
+                if (processMobileSlider) {
+                    const mobileStep = document.createElement('div');
+                    mobileStep.className = `process-mobile-item w-full bg-white border border-slate-200 rounded-xl overflow-hidden ${index === 0 ? 'active' : ''}`;
+                    mobileStep.dataset.index = String(index);
+                    mobileStep.innerHTML = `
+                        <button type="button" class="w-full text-left p-4" aria-expanded="${index === 0 ? 'true' : 'false'}">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center font-bold">${step.num}</div>
+                                <div class="flex-1">
+                                    <p class="text-xs uppercase tracking-wide text-slate-500">Krok ${step.num}</p>
+                                    <p class="text-sm font-semibold text-slate-900">${step.title}</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform ${index === 0 ? 'rotate-180' : ''}"></i>
+                            </div>
+                        </button>
+                        <div class="process-mobile-detail px-4 pb-4 ${index === 0 ? '' : 'hidden'}">
+                            <p class="text-sm text-slate-700 leading-relaxed">${step.desc}</p>
+                        </div>
+                    `;
+                    const mobileBtn = mobileStep.querySelector('button');
+                    mobileBtn.onclick = () => selectProcess(index);
+                    processMobileSlider.appendChild(mobileStep);
+                }
+            });
+
+            selectProcess(0, false);
+        }
+
+        function selectProcess(index, scrollMobile = true) {
+            const btns = processStepsContainer.querySelectorAll('.step-btn');
+            btns.forEach((b, i) => {
+                const num = b.querySelector('.step-num');
+                if (i === index) {
+                    b.classList.add('active', 'border-slate-900', 'shadow-md');
+                    b.classList.remove('border-slate-200');
+                    num.classList.add('bg-white', 'text-slate-900');
+                    num.classList.remove('bg-slate-100');
+                } else {
+                    b.classList.remove('active', 'border-slate-900', 'shadow-md');
+                    b.classList.add('border-slate-200');
+                    num.classList.remove('bg-white', 'text-slate-900');
+                    num.classList.add('bg-slate-100');
+                }
+            });
+
+            if (processMobileSlider) {
+                const mobileCards = processMobileSlider.querySelectorAll('.process-mobile-item');
+                mobileCards.forEach((card, i) => {
+                    const detail = card.querySelector('.process-mobile-detail');
+                    const chevron = card.querySelector('.fa-chevron-down');
+                    const button = card.querySelector('button');
+                    const isActive = i === index;
+
+                    card.classList.toggle('active', isActive);
+                    detail.classList.toggle('hidden', !isActive);
+                    chevron.classList.toggle('rotate-180', isActive);
+                    button.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+                });
+
+                if (scrollMobile) {
+                    const activeCard = mobileCards[index];
+                    if (activeCard) {
+                        activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                }
+            }
+
+            updateProcessDetail(index);
+        }
+
+        function updateProcessDetail(index) {
+            const data = processData[index];
+            processDetailContainer.innerHTML = `
+                <div class="flex items-start gap-6">
+                    <div class="text-6xl font-black text-slate-200 leading-none hidden md:block">${data.num}</div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-3">Fáze ${data.num}: ${data.title}</h3>
+                        <p class="text-lg text-slate-600 leading-relaxed">${data.desc}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderServices();
+            renderProcess();
+        });
+    </script>
+</body>
+
+</html>
