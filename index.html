@@ -10,20 +10,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Chosen Palette: Industriální Důvěra (Slate, Modrá, Bílá). Pozadí: bg-slate-50, Text: text-slate-800, Akcenty: text-blue-600/bg-blue-600. Zvoleno pro profesionální, stabilní a čistý B2B vzhled odpovídající průmyslovému outsourcingu. -->
+    <!-- Chosen Palette: Logo-inspired brand system (blue + orange, with slate neutrals). Pozadí: bg-slate-50, Text: text-slate-800, Akcenty: brand blue/orange. Zvoleno pro profesionální, stabilní a čistý B2B vzhled odpovídající novému logu. -->
     <!-- Application Structure Plan: Aplikace je navržena jako jednostránkový interaktivní B2B dashboard/prezentace. 1. Hero sekce pro okamžité pochopení hodnoty. 2. Interaktivní sekce "Tradiční vs. Náš model" (graf nákladů) pro vizualizaci úspor. 3. Interaktivní tabulkový prohlížeč služeb pro detailní průzkum nabízených činností. 4. Dynamický krokový průvodce procesem spolupráce. 5. Přehled benefitů a ESG přesah. 6. Kontaktní formulář. Tato struktura plynule provádí uživatele od identifikace problému (nedostatek lidí) přes logické řešení (data a služby) až po konverzi (kontakt). -->
     <!-- Visualization & Content Choices: 1. Porovnání nákladů (Chart.js Bar Chart) -> Cíl: Porovnat skryté náklady kmenového zaměstnance vs. transparentní platbu za dílo u AUTO STILO. Zvolen skládaný sloupcový graf pro jasnou vizualizaci eliminace HR a mzdové agendy. 2. Proces kooperace (Interaktivní kroky - Vanilla JS) -> Cíl: Organizovat informace o postupu spolupráce. Zvolen klikací flow-diagram pomocí HTML/Tailwind, aby se uživatel nebál složitosti procesu. 3. Služby (Dynamické karty - Vanilla JS) -> Cíl: Informovat o detailech služeb bez zahlcení textem. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
+        :root {
+            --color-bg-primary: #f8fafc;
+            --color-surface: #ffffff;
+            --color-surface-soft: #f1f5f9;
+            --color-text-primary: #111827;
+            --color-text-secondary: #4b5563;
+            --color-text-muted: #6b7280;
+            --color-border: #e2e8f0;
+            --color-accent: #2f6fed;
+            --color-accent-dark: #f97316;
+            --color-accent-light: #dbeafe;
+            --color-accent-strong: #ea580c;
+            --color-dark-surface: #0f172a;
+            --color-dark-surface-2: #1e293b;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+            color: var(--color-text-primary);
+            background-color: var(--color-bg-primary);
         }
 
         .tab-btn.active {
-            background-color: #1d4ed8 !important;
+            background-color: var(--color-accent-dark) !important;
             color: #ffffff !important;
-            border-color: #1d4ed8 !important;
+            border-color: var(--color-accent-dark) !important;
             box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
         }
 
@@ -87,6 +104,167 @@
             color: white;
             transform: scale(1.05);
         }
+
+        .step-btn .step-title {
+            color: var(--color-text-primary);
+        }
+
+        .step-btn .step-num {
+            color: var(--color-text-primary);
+        }
+
+        .step-btn.active .step-title,
+        .step-btn.active .step-num {
+            color: var(--color-accent) !important;
+        }
+
+        /* Color Picker Panel Styles */
+        #colorPickerPanel {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #colorPickerPanel::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #colorPickerPanel::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+
+        #colorPickerPanel::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        #colorPickerPanel::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .color-input-group input[type="color"] {
+            cursor: pointer;
+            border: 2px solid #e2e8f0;
+            transition: border-color 0.2s;
+        }
+
+        .color-input-group input[type="color"]:hover {
+            border-color: #2563eb;
+        }
+
+        .color-input-group input[type="text"] {
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+
+        .text-blue-600,
+        .hover\:text-blue-600:hover {
+            color: var(--color-accent) !important;
+        }
+
+        .text-blue-500,
+        .text-blue-400 {
+            color: color-mix(in srgb, var(--color-accent) 72%, white) !important;
+        }
+
+        .text-blue-300,
+        .text-blue-200,
+        .text-blue-100 {
+            color: color-mix(in srgb, var(--color-accent) 38%, white) !important;
+        }
+
+        .bg-blue-600,
+        .hover\:bg-blue-600:hover {
+            background-color: var(--color-accent) !important;
+        }
+
+        .bg-blue-700,
+        .hover\:bg-blue-700:hover {
+            background-color: var(--color-accent-dark) !important;
+        }
+
+        .bg-blue-100 {
+            background-color: color-mix(in srgb, var(--color-accent) 12%, white) !important;
+        }
+
+        .bg-blue-900\/50 {
+            background-color: color-mix(in srgb, var(--color-accent) 20%, var(--color-dark-surface)) !important;
+        }
+
+        .border-blue-500,
+        .hover\:border-blue-500:hover {
+            border-color: var(--color-accent) !important;
+        }
+
+        .border-blue-500\/30 {
+            border-color: color-mix(in srgb, var(--color-accent) 30%, transparent) !important;
+        }
+
+        .text-slate-900,
+        .text-slate-800 {
+            color: var(--color-text-primary) !important;
+        }
+
+        .text-slate-700,
+        .text-slate-600 {
+            color: var(--color-text-secondary) !important;
+        }
+
+        .text-slate-500,
+        .text-slate-400 {
+            color: var(--color-text-muted) !important;
+        }
+
+        .bg-slate-50 {
+            background-color: var(--color-bg-primary) !important;
+        }
+
+        .bg-slate-100,
+        .bg-slate-200 {
+            background-color: var(--color-surface-soft) !important;
+        }
+
+        .bg-white,
+        .bg-white\/95 {
+            background-color: var(--color-surface) !important;
+        }
+
+        .border-slate-100,
+        .border-slate-200,
+        .border-slate-300 {
+            border-color: var(--color-border) !important;
+        }
+
+        .bg-slate-800 {
+            background-color: var(--color-dark-surface-2) !important;
+        }
+
+        .bg-slate-900,
+        .bg-slate-950 {
+            background-color: var(--color-dark-surface) !important;
+        }
+
+        .border-slate-700,
+        .border-slate-800 {
+            border-color: color-mix(in srgb, var(--color-dark-surface) 70%, white) !important;
+        }
+
+        .focus\:ring-blue-500:focus {
+            --tw-ring-color: var(--color-accent) !important;
+        }
+
+        .focus\:border-blue-500:focus {
+            border-color: var(--color-accent) !important;
+        }
     </style>
 </head>
 
@@ -96,7 +274,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
-                    <img src="imgs/logo.svg" alt="AUTO STILO Logo" class="h-16 w-auto">
+                    <img src="imgs/logo.png" alt="AUTO STILO Logo" class="h-24 w-auto">
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#sluzby" class="text-slate-600 hover:text-blue-600 font-medium transition">Naše Služby</a>
@@ -548,7 +726,7 @@
                 stepEl.onclick = () => selectProcess(index);
                 stepEl.innerHTML = `
                     <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg bg-slate-100 step-num transition-colors">${step.num}</div>
-                    <div class="text-left font-semibold">${step.title}</div>
+                    <div class="text-left font-semibold step-title">${step.title}</div>
                 `;
                 processStepsContainer.appendChild(stepEl);
 
