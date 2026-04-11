@@ -37,6 +37,11 @@
             background-color: var(--color-bg-primary);
         }
 
+        body.mobile-menu-open {
+            overflow: hidden;
+            touch-action: none;
+        }
+
         .tab-btn.active {
             background-color: var(--color-accent-dark) !important;
             color: #ffffff !important;
@@ -265,12 +270,76 @@
         .focus\:border-blue-500:focus {
             border-color: var(--color-accent) !important;
         }
+
+        .mobile-menu-panel {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: max-height 260ms ease, opacity 220ms ease, transform 220ms ease;
+        }
+
+        .mobile-menu-panel.open {
+            max-height: 360px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-link {
+            display: block;
+            padding: 0.75rem 0;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .mobile-menu-link:last-child {
+            border-bottom: 0;
+        }
+
+        .mobile-menu-link:hover {
+            color: var(--color-accent);
+        }
+
+        .mobile-menu-backdrop {
+            position: fixed;
+            inset: 80px 0 0 0;
+            background: rgba(15, 23, 42, 0.2);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 220ms ease;
+            z-index: 40;
+        }
+
+        .mobile-menu-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        @media (max-width: 767.98px) {
+            #mobile-nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                transform: translateZ(0);
+                backface-visibility: hidden;
+                will-change: transform;
+            }
+
+            body {
+                padding-top: 80px;
+            }
+        }
     </style>
 </head>
 
 <body class="text-slate-800 antialiased">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <nav id="mobile-nav" class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
@@ -286,9 +355,27 @@
                         class="bg-blue-600 text-white px-5 py-2.5 rounded-md font-semibold hover:bg-blue-700 transition shadow-sm">Poptat
                         kapacity</a>
                 </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-toggle" type="button"
+                        class="inline-flex items-center justify-center h-11 w-11 rounded-lg border border-slate-200 bg-white text-slate-700 hover:text-blue-600 hover:border-blue-500 transition"
+                        aria-expanded="false" aria-controls="mobile-menu-panel" aria-label="Otevřít navigaci">
+                        <i id="mobile-menu-icon" class="fa-solid fa-bars text-lg leading-none"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-menu-panel" class="mobile-menu-panel md:hidden border-t border-slate-200">
+                <div class="py-2">
+                    <a href="#sluzby" class="mobile-menu-link">Naše služby</a>
+                    <a href="#proces" class="mobile-menu-link">Jak to funguje</a>
+                    <a href="#benefity" class="mobile-menu-link">Benefity & ESG</a>
+                    <a href="#kontakt" class="mobile-menu-link text-blue-600">Poptat kapacity</a>
+                </div>
             </div>
         </div>
     </nav>
+
+    <div id="mobile-menu-backdrop" class="mobile-menu-backdrop md:hidden" aria-hidden="true"></div>
 
     <header class="bg-white py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-200">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 relative z-10">
@@ -700,6 +787,11 @@
         const processStepsContainer = document.getElementById('process-steps');
         const processMobileSlider = document.getElementById('process-mobile-slider');
         const processDetailContainer = document.getElementById('process-detail');
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+        const mobileNav = document.getElementById('mobile-nav');
 
         function renderProcess() {
             processData.forEach((step, index) => {
@@ -794,9 +886,67 @@
             `;
         }
 
+        function setMobileMenuState(isOpen) {
+            if (!mobileMenuPanel || !mobileMenuToggle) return;
+            mobileMenuPanel.classList.toggle('open', isOpen);
+            if (mobileMenuBackdrop) {
+                mobileMenuBackdrop.classList.toggle('open', isOpen);
+            }
+            document.body.classList.toggle('mobile-menu-open', isOpen && window.innerWidth < 768);
+            mobileMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            if (mobileMenuIcon) {
+                mobileMenuIcon.classList.toggle('fa-bars', !isOpen);
+                mobileMenuIcon.classList.toggle('fa-xmark', isOpen);
+            }
+        }
+
+        function initMobileMenu() {
+            if (!mobileMenuPanel || !mobileMenuToggle) return;
+
+            mobileMenuToggle.addEventListener('click', () => {
+                const isOpen = mobileMenuPanel.classList.contains('open');
+                setMobileMenuState(!isOpen);
+            });
+
+            mobileMenuPanel.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    setMobileMenuState(false);
+                });
+            });
+
+            if (mobileMenuBackdrop) {
+                mobileMenuBackdrop.addEventListener('click', () => {
+                    setMobileMenuState(false);
+                });
+            }
+
+            document.addEventListener('click', (event) => {
+                const isOpen = mobileMenuPanel.classList.contains('open');
+                if (!isOpen || window.innerWidth >= 768 || !mobileNav) return;
+
+                const clickedInsideNav = mobileNav.contains(event.target);
+                if (!clickedInsideNav) {
+                    setMobileMenuState(false);
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    setMobileMenuState(false);
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    setMobileMenuState(false);
+                }
+            });
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             renderServices();
             renderProcess();
+            initMobileMenu();
         });
     </script>
 </body>
