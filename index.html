@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STILO MONT | Výrobní Kooperace a Outsourcing</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preload" as="image" href="imgs/logo.svg">
+    <link rel="stylesheet" href="css/output.css">
     <link rel="icon" type="image/svg+xml" href="imgs/icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Chosen Palette: Logo-inspired brand system (blue + orange, with slate neutrals). Pozadí: bg-slate-50, Text: text-slate-800, Akcenty: brand blue/orange. Zvoleno pro profesionální, stabilní a čistý B2B vzhled odpovídající novému logu. -->
-    <!-- Application Structure Plan: Aplikace je navržena jako jednostránkový interaktivní B2B dashboard/prezentace. 1. Hero sekce pro okamžité pochopení hodnoty. 2. Interaktivní sekce "Tradiční vs. Náš model" (graf nákladů) pro vizualizaci úspor. 3. Interaktivní tabulkový prohlížeč služeb pro detailní průzkum nabízených činností. 4. Dynamický krokový průvodce procesem spolupráce. 5. Přehled benefitů a ESG přesah. 6. Kontaktní formulář. Tato struktura plynule provádí uživatele od identifikace problému (nedostatek lidí) přes logické řešení (data a služby) až po konverzi (kontakt). -->
-    <!-- Visualization & Content Choices: 1. Porovnání nákladů (Chart.js Bar Chart) -> Cíl: Porovnat skryté náklady kmenového zaměstnance vs. transparentní platbu za dílo u STILO MONT. Zvolen skládaný sloupcový graf pro jasnou vizualizaci eliminace HR a mzdové agendy. 2. Proces kooperace (Interaktivní kroky - Vanilla JS) -> Cíl: Organizovat informace o postupu spolupráce. Zvolen klikací flow-diagram pomocí HTML/Tailwind, aby se uživatel nebál složitosti procesu. 3. Služby (Dynamické karty - Vanilla JS) -> Cíl: Informovat o detailech služeb bez zahlcení textem. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
     <style>
         :root {
             --color-bg-primary: #f8fafc;
@@ -343,7 +344,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
-                    <img src="imgs/logo.svg" alt="STILO MONT Logo" class="h-16 w-auto">
+                    <img src="imgs/logo.svg" alt="STILO MONT Logo" width="200" height="64" class="h-16 w-auto">
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#sluzby" class="text-slate-600 hover:text-blue-600 font-medium transition">Naše Služby</a>
@@ -406,7 +407,7 @@
                 <div class="absolute -bottom-8 -right-8 w-56 h-56 bg-slate-200 rounded-full blur-3xl opacity-60"></div>
 
                 <div class="relative rounded-3xl overflow-hidden border border-slate-200 bg-slate-900 shadow-2xl ring-1 ring-slate-200/70">
-                    <img src="imgs/operator_ve_vyrobe.jpg" alt="Operátor ve výrobě"
+                    <img src="imgs/operator_ve_vyrobe.webp" alt="Operátor ve výrobě" loading="lazy" width="600" height="500"
                         class="w-full h-[420px] md:h-[500px] object-cover object-center md:object-[center_35%]">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-transparent to-transparent"></div>
                 </div>
