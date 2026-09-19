@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="STILO MONT provides reliable manufacturing cooperation and outsourcing. Solve workforce shortages with our B2B services.">
+
+    <link rel="canonical" href="https://stilomont.cz/en/">
+    <link rel="alternate" hreflang="cs" href="https://stilomont.cz/cs/">
+    <link rel="alternate" hreflang="en" href="https://stilomont.cz/en/">
+    <link rel="alternate" hreflang="de" href="https://stilomont.cz/de/">
+    <link rel="alternate" hreflang="x-default" href="https://stilomont.cz/cs/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stilomont.cz/en/">
+    <meta property="og:title" content="STILO MONT | Manufacturing cooperation and outsourcing">
+    <meta property="og:description" content="STILO MONT provides reliable manufacturing cooperation and outsourcing. Solve workforce shortages with our B2B services.">
+    <meta property="og:image" content="https://stilomont.cz/imgs/operator_ve_vyrobe.webp">
+    <meta property="og:site_name" content="STILO MONT">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="cs_CZ">
+    <meta property="og:locale:alternate" content="de_DE">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://stilomont.cz/en/">
+    <meta name="twitter:title" content="STILO MONT | Manufacturing cooperation and outsourcing">
+    <meta name="twitter:description" content="STILO MONT provides reliable manufacturing cooperation and outsourcing. Solve workforce shortages with our B2B services.">
+    <meta name="twitter:image" content="https://stilomont.cz/imgs/operator_ve_vyrobe.webp">
+
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "STILO MONT s.r.o.",
+  "image": "https://stilomont.cz/imgs/logo.svg",
+  "url": "https://stilomont.cz/en/",
+  "telephone": "+420608336670",
+  "email": "info@stilomont.cz",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Salaš 96",
+    "addressLocality": "Zlín",
+    "postalCode": "763 51",
+    "addressCountry": "CZ"
+  },
+  "areaServed": [
+    "CZ",
+    "SK"
+  ],
+  "description": "STILO MONT is a reliable partner for manufacturing cooperation and outsourcing of manual processes."
+}</script>
+
+    <title>STILO MONT | Manufacturing cooperation and outsourcing</title>
+    <link rel="preload" as="image" href="/imgs/logo.svg">
+    <link rel="stylesheet" href="/css/output.css">
+    <link rel="icon" type="image/svg+xml" href="/imgs/icon.svg" sizes="any">
+    <link rel="icon" type="image/png" href="/imgs/icon-48.png" sizes="48x48">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <style>
+        :root {
+            --color-bg-primary: #f8fafc;
+            --color-surface: #ffffff;
+            --color-surface-soft: #f1f5f9;
+            --color-text-primary: #111827;
+            --color-text-secondary: #4b5563;
+            --color-text-muted: #6b7280;
+            --color-border: #e2e8f0;
+            --color-accent: #2f6fed;
+            --color-accent-dark: #f97316;
+            --color-accent-light: #dbeafe;
+            --color-accent-strong: #ea580c;
+            --color-dark-surface: #0f172a;
+            --color-dark-surface-2: #1e293b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text-primary);
+            background-color: var(--color-bg-primary);
+        }
+
+        body.mobile-menu-open {
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 1rem;
+            z-index: 100;
+            background: #ffffff;
+            color: #111827;
+            border: 2px solid #1d4ed8;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: top 0.2s ease;
+        }
+
+        .skip-link:focus-visible {
+            top: 1rem;
+        }
+
+        :focus-visible {
+            outline: 3px solid #f97316;
+            outline-offset: 3px;
+        }
+
+        .tab-btn.active {
+            background-color: var(--color-accent-dark) !important;
+            color: #ffffff !important;
+            border-color: var(--color-accent-dark) !important;
+            box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
+        }
+
+        .tab-btn {
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+        }
+
+        .tab-btn:hover:not(.active) {
+            transform: translateY(-2px);
+            border-color: #93c5fd;
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+            background-color: #f8fafc;
+        }
+
+        .tab-btn.active span {
+            color: inherit !important;
+        }
+
+        .tab-btn.active span:last-child {
+            opacity: 0.9;
+        }
+
+        .service-mobile-track {
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .service-mobile-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .service-mobile-card {
+            scroll-snap-align: start;
+            min-width: 85%;
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+        }
+
+        .service-mobile-card.active {
+            border-color: #1d4ed8;
+            background-color: #eff6ff;
+            box-shadow: 0 10px 22px rgba(29, 78, 216, 0.18);
+        }
+
+        .process-mobile-item {
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+        }
+
+        .process-mobile-item.active {
+            border-color: #1d4ed8;
+            background-color: #eff6ff;
+            box-shadow: 0 10px 22px rgba(29, 78, 216, 0.16);
+        }
+
+        .process-mobile-detail {
+            border-top: 1px solid #bfdbfe;
+        }
+
+        .step-btn.active {
+            background-color: #1e293b;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .step-btn .step-title,
+        .step-btn .step-num {
+            color: var(--color-text-primary);
+        }
+
+        .step-btn.active .step-title,
+        .step-btn.active .step-num {
+            color: var(--color-accent) !important;
+        }
+
+        .text-blue-600,
+        .hover\:text-blue-600:hover {
+            color: var(--color-accent) !important;
+        }
+
+        .text-blue-500,
+        .text-blue-400 {
+            color: color-mix(in srgb, var(--color-accent) 72%, white) !important;
+        }
+
+        .text-blue-300,
+        .text-blue-200,
+        .text-blue-100 {
+            color: color-mix(in srgb, var(--color-accent) 38%, white) !important;
+        }
+
+        .bg-blue-600,
+        .hover\:bg-blue-600:hover {
+            background-color: var(--color-accent) !important;
+        }
+
+        .bg-blue-700,
+        .hover\:bg-blue-700:hover {
+            background-color: var(--color-accent-dark) !important;
+        }
+
+        .bg-blue-100 {
+            background-color: color-mix(in srgb, var(--color-accent) 12%, white) !important;
+        }
+
+        .bg-blue-900\/50 {
+            background-color: color-mix(in srgb, var(--color-accent) 20%, var(--color-dark-surface)) !important;
+        }
+
+        .border-blue-500,
+        .hover\:border-blue-500:hover {
+            border-color: var(--color-accent) !important;
+        }
+
+        .border-blue-500\/30 {
+            border-color: color-mix(in srgb, var(--color-accent) 30%, transparent) !important;
+        }
+
+        .text-slate-900,
+        .text-slate-800 {
+            color: var(--color-text-primary) !important;
+        }
+
+        .text-slate-700,
+        .text-slate-600 {
+            color: var(--color-text-secondary) !important;
+        }
+
+        .text-slate-500,
+        .text-slate-400 {
+            color: var(--color-text-muted) !important;
+        }
+
+        .bg-slate-50 {
+            background-color: var(--color-bg-primary) !important;
+        }
+
+        .bg-slate-100,
+        .bg-slate-200 {
+            background-color: var(--color-surface-soft) !important;
+        }
+
+        .bg-white,
+        .bg-white\/95 {
+            background-color: var(--color-surface) !important;
+        }
+
+        .border-slate-100,
+        .border-slate-200,
+        .border-slate-300 {
+            border-color: var(--color-border) !important;
+        }
+
+        .bg-slate-800 {
+            background-color: var(--color-dark-surface-2) !important;
+        }
+
+        .bg-slate-900,
+        .bg-slate-950 {
+            background-color: var(--color-dark-surface) !important;
+        }
+
+        .border-slate-700,
+        .border-slate-800 {
+            border-color: color-mix(in srgb, var(--color-dark-surface) 70%, white) !important;
+        }
+
+        .mobile-menu-panel {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: max-height 260ms ease, opacity 220ms ease, transform 220ms ease;
+        }
+
+        .mobile-menu-panel.open {
+            max-height: 460px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-link {
+            display: block;
+            padding: 0.75rem 0;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .mobile-menu-link:last-child {
+            border-bottom: 0;
+        }
+
+        .mobile-menu-link:hover {
+            color: var(--color-accent);
+        }
+
+        .mobile-menu-backdrop {
+            position: fixed;
+            inset: 80px 0 0 0;
+            background: rgba(15, 23, 42, 0.2);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 220ms ease;
+            z-index: 40;
+        }
+
+        .mobile-menu-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+        }
+
+        .language-switcher a {
+            padding: 0.15rem 0.45rem;
+            border-radius: 0.4rem;
+            border: 1px solid var(--color-border);
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            line-height: 1.2;
+        }
+
+        .language-switcher a:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .language-switcher a[aria-current="page"] {
+            background-color: var(--color-accent);
+            border-color: var(--color-accent);
+            color: #fff;
+        }
+
+        @media (max-width: 767.98px) {
+            #mobile-nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                transform: translateZ(0);
+                backface-visibility: hidden;
+                will-change: transform;
+            }
+
+            body {
+                padding-top: 80px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto !important;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-slate-800 antialiased">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav id="mobile-nav" class="bg-white shadow-md sticky top-0 z-50" aria-label="Main navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <img src="/imgs/logo.svg" alt="STILO MONT logo" width="200" height="64" class="h-16 w-auto">
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#services" class="text-slate-600 hover:text-blue-600 font-medium transition">Our services</a>
+                    <a href="#process" class="text-slate-600 hover:text-blue-600 font-medium transition">How it works</a>
+                    <a href="#benefits" class="text-slate-600 hover:text-blue-600 font-medium transition">Benefits &amp; ESG</a>
+                    <div class="language-switcher" aria-label="Language selector"><a href="/cs/" lang="cs">CZ</a><a href="/en/" lang="en" aria-current="page">EN</a><a href="/de/" lang="de">DE</a></div>
+                    <a href="#contact" class="bg-blue-600 text-white px-5 py-2.5 rounded-md font-semibold hover:bg-blue-700 transition shadow-sm">Request capacity</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-toggle" type="button"
+                        class="inline-flex items-center justify-center h-11 w-11 rounded-lg border border-slate-200 bg-white text-slate-700 hover:text-blue-600 hover:border-blue-500 transition"
+                        aria-expanded="false" aria-controls="mobile-menu-panel" aria-label="Open navigation" data-label-open="Open navigation" data-label-close="Close navigation">
+                        <i id="mobile-menu-icon" class="fa-solid fa-bars text-lg leading-none" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-menu-panel" class="mobile-menu-panel md:hidden border-t border-slate-200" hidden>
+                <div class="py-2">
+                    <a href="#services" class="mobile-menu-link">Our services</a>
+                    <a href="#process" class="mobile-menu-link">How it works</a>
+                    <a href="#benefits" class="mobile-menu-link">Benefits &amp; ESG</a>
+                    <a href="#contact" class="mobile-menu-link text-blue-600">Request capacity</a>
+                    <div class="pt-3">
+                        <p class="text-xs uppercase tracking-wide text-slate-500 mb-2">Language</p>
+                        <div class="language-switcher" aria-label="Language selector"><a href="/cs/" lang="cs">CZ</a><a href="/en/" lang="en" aria-current="page">EN</a><a href="/de/" lang="de">DE</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu-backdrop" class="mobile-menu-backdrop md:hidden" aria-hidden="true"></div>
+
+    <main id="main-content">
+        <header class="bg-white py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-200">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 relative z-10">
+                <div class="md:w-1/2 text-left">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
+                        Missing production operators? <br>
+                        <span class="text-blue-600">Free up your hands</span> with external capacity.
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed font-light">STILO MONT is your reliable partner for manufacturing cooperation and outsourcing of manual processes. We take over assembly, completion and rework. Get stable output without staffing worries and hidden HR costs.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition shadow-lg transform hover:-translate-y-1 text-center">Check available capacity</a>
+                        <a href="#services" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold py-4 px-8 rounded-lg text-lg transition text-center">Our services</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="absolute -top-6 -left-6 w-44 h-44 bg-blue-100 rounded-full blur-3xl opacity-70"></div>
+                    <div class="absolute -bottom-8 -right-8 w-56 h-56 bg-slate-200 rounded-full blur-3xl opacity-60"></div>
+
+                    <div class="relative rounded-3xl overflow-hidden border border-slate-200 bg-slate-900 shadow-2xl ring-1 ring-slate-200/70">
+                        <img src="/imgs/operator_ve_vyrobe.webp" alt="Production operator at work" fetchpriority="high" width="600" height="500" class="w-full h-[420px] md:h-[500px] object-cover object-center md:object-[center_35%]">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-transparent to-transparent"></div>
+                    </div>
+
+                    <div class="absolute bottom-5 left-5 bg-white/95 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg border border-slate-200/80">
+                        <p class="text-xs uppercase tracking-wide text-slate-500 font-semibold">Monitored operation</p>
+                        <p class="text-sm text-slate-900 font-bold">Stable output quality</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Our services: Which processes we can take over</h2>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <div class="lg:hidden">
+                        <p class="text-sm text-slate-600 mb-3">Swipe and choose a service:</p>
+                        <div id="service-mobile-slider" class="service-mobile-track flex gap-3 overflow-x-auto pb-2 -mx-1 px-1" aria-label="Service offer"></div>
+                        <div id="service-mobile-dots" class="flex items-center justify-center gap-2 mt-3"></div>
+                    </div>
+
+                    <div class="lg:w-1/3 hidden lg:flex flex-col gap-3" id="service-tabs"></div>
+                    <div class="lg:w-2/3 bg-white rounded-xl shadow-md border border-slate-200 p-6 md:p-8 min-h-[320px] lg:min-h-[350px] flex flex-col justify-center transition-all duration-300" id="service-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">How cooperation works (step by step)</h2>
+                    <p class="text-lg text-slate-600 max-w-3xl mx-auto">Our process is designed to reduce the burden on your company. We work in dedicated monitored premises under strict quality control.</p>
+                </div>
+
+                <div class="md:hidden mb-8">
+                    <div id="process-mobile-slider" class="space-y-3"></div>
+                </div>
+
+                <div class="relative hidden md:block">
+                    <div class="absolute top-1/2 left-0 w-full h-1 bg-slate-200 -translate-y-1/2 z-0"></div>
+                    <div class="flex flex-row justify-between relative z-10 gap-4" id="process-steps"></div>
+                </div>
+
+                <div class="hidden md:block mt-12 bg-slate-50 border border-slate-200 rounded-xl p-8 shadow-sm" id="process-detail"></div>
+            </div>
+        </section>
+
+        <section id="benefits" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Why choose cooperation with STILO MONT</h2>
+                    <p class="text-lg text-slate-300 max-w-3xl mx-auto">We are not a staffing agency. We do not supply headcount, we deliver finished work. These are the key reasons why our outsourcing model improves your efficiency.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-slate-800 rounded-xl p-8 border border-slate-700 hover:border-blue-500 transition-colors">
+                        <div class="text-4xl text-blue-400 mb-4"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+                        <h3 class="text-xl font-bold mb-3">Stability and zero turnover</h3>
+                        <p class="text-slate-300 leading-relaxed">Our operator team is stable. You avoid production outages caused by sick leave or employee departures.</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-xl p-8 border border-slate-700 hover:border-blue-500 transition-colors">
+                        <div class="text-4xl text-blue-400 mb-4"><i class="fa-solid fa-coins" aria-hidden="true"></i></div>
+                        <h3 class="text-xl font-bold mb-3">Pay for results, not hours</h3>
+                        <p class="text-slate-300 leading-relaxed">You pay only the agreed price per completed piece or fulfilled standard. No payroll burden, leave coverage, sick pay or expensive downtime.</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-xl p-8 border border-slate-700 hover:border-blue-500 transition-colors">
+                        <div class="text-4xl text-blue-400 mb-4"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+                        <h3 class="text-xl font-bold mb-3">Immediate scalability</h3>
+                        <p class="text-slate-300 leading-relaxed">Need sudden extra capacity or a large order? We can quickly allocate, train and deploy a dedicated operator team for your project.</p>
+                    </div>
+                </div>
+
+                <div class="bg-blue-900/50 border border-blue-500/30 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-bold mb-3 text-white">Quality guarantee and social responsibility (ESG)</h3>
+                        <p class="text-blue-100 mb-4">We focus on precision, protection of your know-how and safety of entrusted assets. Our operations follow strict safety standards.</p>
+                        <p class="text-blue-200 font-medium"><span class="text-white font-bold">Bonus for your corporate goals:</span> By working with STILO MONT, you gain a reliable supplier and a strong partner for CSR and ESG reporting targets.</p>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center text-8xl text-blue-500/20">
+                        <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-100">
+            <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+                <div class="w-full bg-blue-600 text-white p-10 flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4">Looking for a reliable partner?</h2>
+                        <p class="text-blue-100 mb-8 leading-relaxed">Do not let your orders stall. Contact us and find out what manufacturing cooperation options we can offer your business.</p>
+                        <div class="rounded-xl border border-blue-400/60 bg-blue-900/60 p-5 mb-6">
+                            <p class="text-sm uppercase tracking-wide text-blue-200 font-semibold mb-2">Main contact</p>
+                            <a href="mailto:info@stilomont.cz" class="inline-flex items-center gap-2 text-white hover:text-blue-100 transition">
+                                <i class="fa-solid fa-envelope text-blue-300" aria-hidden="true"></i>
+                                <span class="text-xl font-bold break-all">info@stilomont.cz</span>
+                            </a>
+                        </div>
+
+                        <div class="mb-5">
+                            <p class="text-sm uppercase tracking-wide text-blue-200 font-semibold">Managing directors</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="rounded-xl border border-blue-500/50 bg-blue-900/40 p-5">
+                                <p class="text-xl font-bold text-white mb-4">Ivo Ševčík</p>
+                                <div class="space-y-2">
+                                    <a href="mailto:ivo.sevcik@stilomont.cz" class="flex items-center gap-2 text-blue-100 hover:text-white transition">
+                                        <i class="fa-solid fa-envelope text-blue-300" aria-hidden="true"></i>
+                                        <span class="font-medium break-all">ivo.sevcik@stilomont.cz</span>
+                                    </a>
+                                    <a href="tel:+420608336670" class="flex items-center gap-2 text-blue-100 hover:text-white transition">
+                                        <i class="fa-solid fa-phone text-blue-300" aria-hidden="true"></i>
+                                        <span class="font-medium">+420 608 336 670</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="rounded-xl border border-blue-500/50 bg-blue-900/40 p-5">
+                                <p class="text-xl font-bold text-white mb-4">Petr Skopalík</p>
+                                <div class="space-y-2">
+                                    <a href="mailto:petr.skopalik@stilomont.cz" class="flex items-center gap-2 text-blue-100 hover:text-white transition">
+                                        <i class="fa-solid fa-envelope text-blue-300" aria-hidden="true"></i>
+                                        <span class="font-medium break-all">petr.skopalik@stilomont.cz</span>
+                                    </a>
+                                    <a href="tel:+420608717548" class="flex items-center gap-2 text-blue-100 hover:text-white transition">
+                                        <i class="fa-solid fa-phone text-blue-300" aria-hidden="true"></i>
+                                        <span class="font-medium">+420 608 717 548</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-blue-500/50">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl text-blue-300"><i class="fa-solid fa-building" aria-hidden="true"></i></span>
+                                <div>
+                                    <p class="text-sm text-blue-200">Company details</p>
+                                    <p class="font-semibold text-lg">Salaš 96, 763 51 Zlín</p>
+                                    <p>Company ID: 27703819</p>
+                                    <p>VAT ID: CZ27703819</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-950 text-slate-400 py-8 text-center text-sm border-t border-slate-800">
+        <p>© 2026 STILO MONT s.r.o. All rights reserved. | Reliable partner for manufacturing cooperation.</p>
+    </footer>
+
+    <script>
+        const localeData = {"meta":{"lang":"en","title":"STILO MONT | Manufacturing cooperation and outsourcing","description":"STILO MONT provides reliable manufacturing cooperation and outsourcing. Solve workforce shortages with our B2B services.","ogTitle":"STILO MONT | Manufacturing cooperation and outsourcing","ogDescription":"STILO MONT provides reliable manufacturing cooperation and outsourcing. Solve workforce shortages with our B2B services.","ogLocale":"en_US"},"schema":{"description":"STILO MONT is a reliable partner for manufacturing cooperation and outsourcing of manual processes."},"ui":{"skipToContent":"Skip to main content","logoAlt":"STILO MONT logo","languageSwitcherLabel":"Language","languageSwitcherAriaLabel":"Language selector","languageNames":{"cs":"CZ","en":"EN","de":"DE"}},"nav":{"ariaLabel":"Main navigation","services":"Our services","process":"How it works","benefits":"Benefits & ESG","contact":"Request capacity","mobileToggleOpen":"Open navigation","mobileToggleClose":"Close navigation"},"hero":{"titleLine1":"Missing production operators?","titleHighlight":"Free up your hands","titleLine2":"with external capacity.","description":"STILO MONT is your reliable partner for manufacturing cooperation and outsourcing of manual processes. We take over assembly, completion and rework. Get stable output without staffing worries and hidden HR costs.","primaryCta":"Check available capacity","secondaryCta":"Our services","imageAlt":"Production operator at work","badgeTop":"Monitored operation","badgeBottom":"Stable output quality"},"services":{"heading":"Our services: Which processes we can take over","mobileHint":"Swipe and choose a service:","sliderAriaLabel":"Service offer","dotAriaLabel":"Go to service {index}","keyBenefitsHeading":"Key benefits of this cooperation","items":[{"id":"assembly","iconClass":"fa-solid fa-screwdriver-wrench","title":"Manual assembly and completion","shortDesc":"Assembling products from multiple parts.","fullDesc":"Professional assembly of products from multiple parts, precise gluing, folding and riveting. Our capacity is ideal for automotive, electrical industry, toys, and consumer goods where high manual precision is required.","benefits":["Faster final production phase","Strict quality control","Lower assembly line costs"]},{"id":"rework","iconClass":"fa-solid fa-magnifying-glass","title":"Finishing and rework","shortDesc":"Trimming, quality checks and sorting.","fullDesc":"Detailed trimming of plastic parts, burr removal after molding, visual and mechanical quality checks, and precise sorting. We help protect your production from defects and prepare parts for smooth next-stage processing.","benefits":["Thorough outgoing inspection","Recovery of valuable material","Relief for your internal technicians"]},{"id":"packing","iconClass":"fa-solid fa-box-open","title":"Packing, repacking and co-packing","shortDesc":"Gift set completion and palletizing.","fullDesc":"Comprehensive packing services including completion of gift and promo packs, insertion of printed manuals and flyers, product labeling, and final preparation for safe palletizing and dispatch.","benefits":["Fast handling of marketing campaigns","Consistent visual packaging quality","Logistics readiness"]}]},"process":{"heading":"How cooperation works (step by step)","description":"Our process is designed to reduce the burden on your company. We work in dedicated monitored premises under strict quality control.","steps":[{"num":"1","title":"Analysis and sampling","desc":"Send us reference samples, drawings and required quality standards. We quickly run a time study and provide transparent per-piece pricing."},{"num":"2","title":"Logistics","desc":"You deliver material or semi-finished products to our secure external facilities. If needed, we can arrange transportation using our own vehicles."},{"num":"3","title":"Processing and control","desc":"Our dedicated operators complete agreed work exactly on time. Internal inspectors continuously monitor quality, standards and procedures."},{"num":"4","title":"Dispatch of finished work","desc":"We return precisely processed, checked and securely packed output to your production line, or directly to your end customer by agreement."}]},"benefits":{"heading":"Why choose cooperation with STILO MONT","description":"We are not a staffing agency. We do not supply headcount, we deliver finished work. These are the key reasons why our outsourcing model improves your efficiency.","card1":{"title":"Stability and zero turnover","description":"Our operator team is stable. You avoid production outages caused by sick leave or employee departures."},"card2":{"title":"Pay for results, not hours","description":"You pay only the agreed price per completed piece or fulfilled standard. No payroll burden, leave coverage, sick pay or expensive downtime."},"card3":{"title":"Immediate scalability","description":"Need sudden extra capacity or a large order? We can quickly allocate, train and deploy a dedicated operator team for your project."},"esgTitle":"Quality guarantee and social responsibility (ESG)","esgDescription":"We focus on precision, protection of your know-how and safety of entrusted assets. Our operations follow strict safety standards.","esgHighlight":"Bonus for your corporate goals:","esgText":"By working with STILO MONT, you gain a reliable supplier and a strong partner for CSR and ESG reporting targets."},"contact":{"heading":"Looking for a reliable partner?","description":"Do not let your orders stall. Contact us and find out what manufacturing cooperation options we can offer your business.","mainContact":"Main contact","executives":"Managing directors","companyLabel":"Company details","companyIdLabel":"Company ID","vatIdLabel":"VAT ID"},"footer":{"text":"© 2026 STILO MONT s.r.o. All rights reserved. | Reliable partner for manufacturing cooperation."}};
+        const servicesData = localeData.services.items;
+        const processData = localeData.process.steps;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const serviceTabsContainer = document.getElementById('service-tabs');
+        const serviceContentContainer = document.getElementById('service-content');
+        const serviceMobileSlider = document.getElementById('service-mobile-slider');
+        const serviceMobileDots = document.getElementById('service-mobile-dots');
+
+        function createIcon(iconClass) {
+            const icon = document.createElement('i');
+            icon.className = `${iconClass} text-blue-600`;
+            icon.setAttribute('aria-hidden', 'true');
+            return icon;
+        }
+
+        function renderServices() {
+            servicesData.forEach((srv, index) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `tab-btn w-full text-left px-6 py-4 rounded-lg border border-slate-200 bg-white font-medium hover:bg-slate-50 transition-all flex flex-col ${index === 0 ? 'active' : ''}`;
+                btn.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
+                btn.onclick = () => selectService(index);
+
+                const title = document.createElement('span');
+                title.className = 'text-xl mb-1 flex items-center gap-2';
+                title.append(createIcon(srv.iconClass), document.createTextNode(srv.title));
+
+                const subtitle = document.createElement('span');
+                subtitle.className = 'text-sm font-normal opacity-80';
+                subtitle.textContent = srv.shortDesc;
+
+                btn.append(title, subtitle);
+                serviceTabsContainer.appendChild(btn);
+
+                if (serviceMobileSlider) {
+                    const mobileCard = document.createElement('button');
+                    mobileCard.type = 'button';
+                    mobileCard.className = `service-mobile-card shrink-0 text-left rounded-xl border border-slate-200 bg-white p-4 ${index === 0 ? 'active' : ''}`;
+                    mobileCard.dataset.index = String(index);
+                    mobileCard.onclick = () => selectService(index);
+
+                    const mobileTitle = document.createElement('div');
+                    mobileTitle.className = 'text-lg font-semibold text-slate-900 mb-1 flex items-center gap-2';
+                    mobileTitle.append(createIcon(srv.iconClass), document.createTextNode(srv.title));
+
+                    const mobileDesc = document.createElement('div');
+                    mobileDesc.className = 'text-sm text-slate-600';
+                    mobileDesc.textContent = srv.shortDesc;
+
+                    mobileCard.append(mobileTitle, mobileDesc);
+                    serviceMobileSlider.appendChild(mobileCard);
+                }
+
+                if (serviceMobileDots) {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.dataset.index = String(index);
+                    dot.setAttribute('aria-label', localeData.services.dotAriaLabel.replace('{index}', String(index + 1)));
+                    dot.setAttribute('aria-current', index === 0 ? 'true' : 'false');
+                    dot.className = `h-2.5 w-2.5 rounded-full transition-all ${index === 0 ? 'bg-blue-600 w-6' : 'bg-slate-300'}`;
+                    dot.onclick = () => selectService(index);
+                    serviceMobileDots.appendChild(dot);
+                }
+            });
+
+            if (serviceMobileSlider) {
+                let scrollTimeout;
+                serviceMobileSlider.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        const cards = [...serviceMobileSlider.querySelectorAll('.service-mobile-card')];
+                        if (!cards.length) return;
+
+                        const sliderRect = serviceMobileSlider.getBoundingClientRect();
+                        const sliderCenter = sliderRect.left + (sliderRect.width / 2);
+
+                        let closestIndex = 0;
+                        let minDistance = Number.POSITIVE_INFINITY;
+
+                        cards.forEach((card, idx) => {
+                            const rect = card.getBoundingClientRect();
+                            const center = rect.left + (rect.width / 2);
+                            const distance = Math.abs(center - sliderCenter);
+                            if (distance < minDistance) {
+                                minDistance = distance;
+                                closestIndex = idx;
+                            }
+                        });
+
+                        selectService(closestIndex, false);
+                    }, 90);
+                });
+            }
+
+            selectService(0, false);
+        }
+
+        function scrollWithPreference(node, options) {
+            node.scrollIntoView({
+                ...options,
+                behavior: prefersReducedMotion ? 'auto' : 'smooth'
+            });
+        }
+
+        function selectService(index, scrollMobile = true) {
+            const btns = serviceTabsContainer.querySelectorAll('.tab-btn');
+            btns.forEach((b, i) => {
+                b.classList.toggle('active', i === index);
+                b.setAttribute('aria-pressed', i === index ? 'true' : 'false');
+            });
+
+            if (serviceMobileSlider) {
+                const cards = serviceMobileSlider.querySelectorAll('.service-mobile-card');
+                cards.forEach((card, i) => {
+                    card.classList.toggle('active', i === index);
+                });
+
+                if (scrollMobile) {
+                    const activeCard = cards[index];
+                    if (activeCard) {
+                        scrollWithPreference(activeCard, { inline: 'start', block: 'nearest' });
+                    }
+                }
+            }
+
+            if (serviceMobileDots) {
+                const dots = serviceMobileDots.querySelectorAll('button');
+                dots.forEach((dot, i) => {
+                    dot.className = `h-2.5 rounded-full transition-all ${i === index ? 'bg-blue-600 w-6' : 'bg-slate-300 w-2.5'}`;
+                    dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+                });
+            }
+
+            updateServiceContent(index);
+        }
+
+        function updateServiceContent(index) {
+            const data = servicesData[index];
+            serviceContentContainer.innerHTML = '';
+
+            const title = document.createElement('h3');
+            title.className = 'text-3xl font-bold text-slate-900 mb-4';
+            title.textContent = data.title;
+
+            const description = document.createElement('p');
+            description.className = 'text-lg text-slate-600 mb-8 leading-relaxed';
+            description.textContent = data.fullDesc;
+
+            const wrapper = document.createElement('div');
+            wrapper.className = 'bg-slate-50 rounded-lg p-6 border border-slate-100';
+
+            const heading = document.createElement('h4');
+            heading.className = 'font-bold text-slate-800 mb-3 uppercase text-sm tracking-wider';
+            heading.textContent = localeData.services.keyBenefitsHeading;
+
+            const list = document.createElement('ul');
+            list.className = 'space-y-2 text-slate-700 font-medium';
+
+            data.benefits.forEach((benefit) => {
+                const item = document.createElement('li');
+                item.className = 'flex items-center gap-2';
+
+                const mark = document.createElement('span');
+                mark.className = 'text-green-500';
+                mark.textContent = '✓';
+
+                item.append(mark, document.createTextNode(benefit));
+                list.appendChild(item);
+            });
+
+            wrapper.append(heading, list);
+            serviceContentContainer.append(title, description, wrapper);
+        }
+
+        const processStepsContainer = document.getElementById('process-steps');
+        const processMobileSlider = document.getElementById('process-mobile-slider');
+        const processDetailContainer = document.getElementById('process-detail');
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        function renderProcess() {
+            processData.forEach((step, index) => {
+                const stepEl = document.createElement('button');
+                stepEl.type = 'button';
+                stepEl.className = `step-btn flex-1 bg-white border-2 border-slate-200 rounded-xl p-4 flex items-center gap-4 transition-all duration-300 hover:border-slate-400 ${index === 0 ? 'active border-slate-900 shadow-md' : ''}`;
+                stepEl.onclick = () => selectProcess(index);
+                stepEl.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
+                stepEl.innerHTML = `
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg bg-slate-100 step-num transition-colors">${step.num}</div>
+                    <div class="text-left font-semibold step-title">${step.title}</div>
+                `;
+                processStepsContainer.appendChild(stepEl);
+
+                if (processMobileSlider) {
+                    const detailId = `process-detail-${step.num}`;
+                    const mobileStep = document.createElement('div');
+                    mobileStep.className = `process-mobile-item w-full bg-white border border-slate-200 rounded-xl overflow-hidden ${index === 0 ? 'active' : ''}`;
+                    mobileStep.dataset.index = String(index);
+                    mobileStep.innerHTML = `
+                        <button type="button" class="w-full text-left p-4" aria-expanded="${index === 0 ? 'true' : 'false'}" aria-controls="${detailId}">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center font-bold">${step.num}</div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-semibold text-slate-900">${step.title}</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform ${index === 0 ? 'rotate-180' : ''}" aria-hidden="true"></i>
+                            </div>
+                        </button>
+                        <div id="${detailId}" class="process-mobile-detail px-4 pb-4 ${index === 0 ? '' : 'hidden'}">
+                            <p class="text-sm text-slate-700 leading-relaxed">${step.desc}</p>
+                        </div>
+                    `;
+                    const mobileBtn = mobileStep.querySelector('button');
+                    mobileBtn.onclick = () => selectProcess(index);
+                    processMobileSlider.appendChild(mobileStep);
+                }
+            });
+
+            selectProcess(0, false);
+        }
+
+        function selectProcess(index, scrollMobile = true) {
+            const btns = processStepsContainer.querySelectorAll('.step-btn');
+            btns.forEach((b, i) => {
+                const num = b.querySelector('.step-num');
+                b.setAttribute('aria-pressed', i === index ? 'true' : 'false');
+                if (i === index) {
+                    b.classList.add('active', 'border-slate-900', 'shadow-md');
+                    b.classList.remove('border-slate-200');
+                    num.classList.add('bg-white', 'text-slate-900');
+                    num.classList.remove('bg-slate-100');
+                } else {
+                    b.classList.remove('active', 'border-slate-900', 'shadow-md');
+                    b.classList.add('border-slate-200');
+                    num.classList.remove('bg-white', 'text-slate-900');
+                    num.classList.add('bg-slate-100');
+                }
+            });
+
+            if (processMobileSlider) {
+                const mobileCards = processMobileSlider.querySelectorAll('.process-mobile-item');
+                mobileCards.forEach((card, i) => {
+                    const detail = card.querySelector('.process-mobile-detail');
+                    const chevron = card.querySelector('.fa-chevron-down');
+                    const button = card.querySelector('button');
+                    const isActive = i === index;
+
+                    card.classList.toggle('active', isActive);
+                    detail.classList.toggle('hidden', !isActive);
+                    chevron.classList.toggle('rotate-180', isActive);
+                    button.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+                });
+
+                if (scrollMobile) {
+                    const activeCard = mobileCards[index];
+                    if (activeCard) {
+                        scrollWithPreference(activeCard, { block: 'nearest' });
+                    }
+                }
+            }
+
+            updateProcessDetail(index);
+        }
+
+        function updateProcessDetail(index) {
+            const data = processData[index];
+            processDetailContainer.innerHTML = `
+                <div class="flex items-start gap-6">
+                    <div class="text-6xl font-black text-slate-200 leading-none hidden md:block">${data.num}</div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-3">${data.title}</h3>
+                        <p class="text-lg text-slate-600 leading-relaxed">${data.desc}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function setMobileMenuState(isOpen) {
+            if (!mobileMenuPanel || !mobileMenuToggle) return;
+            const wasOpen = mobileMenuPanel.classList.contains('open');
+            mobileMenuPanel.hidden = !isOpen;
+            mobileMenuPanel.classList.toggle('open', isOpen);
+            if (mobileMenuBackdrop) {
+                mobileMenuBackdrop.classList.toggle('open', isOpen);
+            }
+            document.body.classList.toggle('mobile-menu-open', isOpen && window.innerWidth < 768);
+            mobileMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            mobileMenuToggle.setAttribute('aria-label', isOpen ? mobileMenuToggle.dataset.labelClose : mobileMenuToggle.dataset.labelOpen);
+            if (mobileMenuIcon) {
+                mobileMenuIcon.classList.toggle('fa-bars', !isOpen);
+                mobileMenuIcon.classList.toggle('fa-xmark', isOpen);
+            }
+            if (isOpen) {
+                const firstLink = mobileMenuPanel.querySelector('a');
+                if (firstLink) firstLink.focus();
+            } else if (wasOpen) {
+                mobileMenuToggle.focus();
+            }
+        }
+
+        function initMobileMenu() {
+            if (!mobileMenuPanel || !mobileMenuToggle) return;
+
+            mobileMenuToggle.addEventListener('click', () => {
+                const isOpen = mobileMenuPanel.classList.contains('open');
+                setMobileMenuState(!isOpen);
+            });
+
+            mobileMenuPanel.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    setMobileMenuState(false);
+                });
+            });
+
+            if (mobileMenuBackdrop) {
+                mobileMenuBackdrop.addEventListener('click', () => {
+                    setMobileMenuState(false);
+                });
+            }
+
+            document.addEventListener('click', (event) => {
+                const isOpen = mobileMenuPanel.classList.contains('open');
+                if (!isOpen || window.innerWidth >= 768 || !mobileNav) return;
+
+                const clickedInsideNav = mobileNav.contains(event.target);
+                if (!clickedInsideNav) {
+                    setMobileMenuState(false);
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    setMobileMenuState(false);
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    setMobileMenuState(false);
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderServices();
+            renderProcess();
+            initMobileMenu();
+        });
+    </script>
+</body>
+
+</html>
