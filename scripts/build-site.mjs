@@ -9,12 +9,11 @@ const templatePath = path.join(rootDir, 'src', 'template.html');
 const localesDir = path.join(rootDir, 'src', 'locales');
 const outputRoot = rootDir;
 
-const languages = ['cs', 'en', 'de'];
-const localeUrls = {
-  cs: 'https://stilomont.cz/cs/',
-  en: 'https://stilomont.cz/en/',
-  de: 'https://stilomont.cz/de/'
-};
+const languages = [
+  { code: 'cs', url: 'https://stilomont.cz/cs/', ogLocale: 'cs_CZ' },
+  { code: 'en', url: 'https://stilomont.cz/en/', ogLocale: 'en_US' },
+  { code: 'de', url: 'https://stilomont.cz/de/', ogLocale: 'de_DE' }
+];
 
 function escapeHtml(value) {
   return String(value)
@@ -47,27 +46,44 @@ function renderTemplate(template, data) {
     });
 }
 
-function buildLanguageSwitcher(currentLang, localeData) {
+function buildLanguageOptions(currentLang, localeData) {
   return languages
-    .map((langCode) => {
-      const current = langCode === currentLang ? ' aria-current="page"' : '';
-      const langName = localeData.ui.languageNames[langCode];
-      return `<a href="/${langCode}/" lang="${langCode}"${current}>${escapeHtml(langName)}</a>`;
+    .map(({ code }) => {
+      const selected = code === currentLang ? ' selected' : '';
+      const langName = localeData.ui.languageNames[code];
+      return `<option value="/${code}/" lang="${code}"${selected}>${escapeHtml(langName)}</option>`;
     })
     .join('');
 }
 
+function buildLanguageMenu(currentLang, localeData) {
+  const currentName = localeData.ui.languageNames[currentLang];
+  const links = languages
+    .map(({ code }) => {
+      const current = code === currentLang ? ' aria-current="page"' : '';
+      const langName = localeData.ui.languageNames[code];
+      return `<a href="/${code}/" lang="${code}" role="option"${current}>${escapeHtml(langName)}</a>`;
+    })
+    .join('');
+
+  return `<button type="button" class="language-picker-button" aria-haspopup="listbox" aria-expanded="false" aria-label="${escapeHtml(localeData.ui.languageSwitcherAriaLabel)}">
+    <i class="language-picker-icon fa-solid fa-globe" aria-hidden="true"></i>
+    <span>${escapeHtml(currentName)}</span>
+  </button>
+  <div class="language-picker-menu" role="listbox" hidden>${links}</div>`;
+}
+
 function buildHreflangs() {
   const links = languages
-    .map((langCode) => `<link rel="alternate" hreflang="${langCode}" href="${localeUrls[langCode]}">`)
+    .map(({ code, url }) => `<link rel="alternate" hreflang="${code}" href="${url}">`)
     .join('\n    ');
-  return `${links}\n    <link rel="alternate" hreflang="x-default" href="${localeUrls.cs}">`;
+  return `${links}\n    <link rel="alternate" hreflang="x-default" href="${languages[0].url}">`;
 }
 
 function buildOgAlternates(currentLang) {
   return languages
-    .filter((langCode) => langCode !== currentLang)
-    .map((langCode) => `<meta property="og:locale:alternate" content="${langCode === 'cs' ? 'cs_CZ' : langCode === 'en' ? 'en_US' : 'de_DE'}">`)
+    .filter(({ code }) => code !== currentLang)
+    .map(({ ogLocale }) => `<meta property="og:locale:alternate" content="${ogLocale}">`)
     .join('\n    ');
 }
 
@@ -99,7 +115,7 @@ function createSchemaJson(localeData, canonicalUrl) {
 async function main() {
   const template = await fs.readFile(templatePath, 'utf8');
 
-  for (const langCode of languages) {
+  for (const { code: langCode } of languages) {
     const localePath = path.join(localesDir, `${langCode}.json`);
     const localeData = JSON.parse(await fs.readFile(localePath, 'utf8'));
 
@@ -107,7 +123,8 @@ async function main() {
       throw new Error(`Locale ${langCode} is missing required dynamic content arrays.`);
     }
 
-    const canonicalUrl = localeUrls[langCode];
+    const language = languages.find(({ code }) => code === langCode);
+    const canonicalUrl = language.url;
     const data = {
       ...localeData,
       meta: {
@@ -118,8 +135,8 @@ async function main() {
       localeDataJson: JSON.stringify(localeData).replace(/</g, '\\u003c'),
       hreflangLinks: buildHreflangs(),
       ogLocaleAlternates: buildOgAlternates(langCode),
-      languageSwitcherDesktop: buildLanguageSwitcher(langCode, localeData),
-      languageSwitcherMobile: buildLanguageSwitcher(langCode, localeData),
+      languageSwitcherDesktop: buildLanguageMenu(langCode, localeData),
+      languageSwitcherMobile: buildLanguageOptions(langCode, localeData),
       schemaJson: createSchemaJson(localeData, canonicalUrl)
     };
 
@@ -130,16 +147,25 @@ async function main() {
   }
 
   const rootRedirect = `<!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=/cs/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="canonical" href="https://stilomont.cz/cs/">
+  <link rel="canonical" href="https://stilomont.cz/en/">
   <title>STILO MONT</title>
 </head>
 <body>
-  <p>Přesměrování na českou verzi… <a href="/cs/">Pokračovat</a></p>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=/en/">
+    <p>Redirecting to the English version… <a href="/en/">Continue</a></p>
+  </noscript>
+  <script>
+    const supportedLanguages = ${JSON.stringify(languages.map(({ code }) => code))};
+    const preferredLanguage = (navigator.languages || [navigator.language])
+      .map((language) => language.toLowerCase().split('-')[0])
+      .find((language) => supportedLanguages.includes(language)) || 'en';
+    window.location.replace('/' + preferredLanguage + '/' + window.location.search + window.location.hash);
+  </script>
 </body>
 </html>
 `;

@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=/cs/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="canonical" href="https://stilomont.cz/cs/">
+  <link rel="canonical" href="https://stilomont.cz/en/">
   <title>STILO MONT</title>
 </head>
 <body>
-  <p>Přesměrování na českou verzi… <a href="/cs/">Pokračovat</a></p>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=/en/">
+    <p>Redirecting to the English version… <a href="/en/">Continue</a></p>
+  </noscript>
+  <script>
+    const supportedLanguages = ["cs","en","de"];
+    const preferredLanguage = (navigator.languages || [navigator.language])
+      .map((language) => language.toLowerCase().split('-')[0])
+      .find((language) => supportedLanguages.includes(language)) || 'en';
+    window.location.replace('/' + preferredLanguage + '/' + window.location.search + window.location.hash);
+  </script>
 </body>
 </html>
