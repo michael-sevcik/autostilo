@@ -1,0 +1,147 @@
+{
+  "meta": {
+    "lang": "de",
+    "title": "STILO MONT | Produktionskooperation und Outsourcing",
+    "description": "STILO MONT bietet zuverlässige Produktionskooperation und Outsourcing. Lösen Sie Personalengpässe mit unseren B2B-Services.",
+    "ogTitle": "STILO MONT | Produktionskooperation und Outsourcing",
+    "ogDescription": "STILO MONT bietet zuverlässige Produktionskooperation und Outsourcing. Lösen Sie Personalengpässe mit unseren B2B-Services.",
+    "ogLocale": "de_DE"
+  },
+  "schema": {
+    "description": "STILO MONT ist ein zuverlässiger Partner für Produktionskooperation und Outsourcing manueller Prozesse."
+  },
+  "ui": {
+    "skipToContent": "Zum Hauptinhalt springen",
+    "logoAlt": "STILO MONT Logo",
+    "languageSwitcherLabel": "Sprache",
+    "languageSwitcherAriaLabel": "Sprachauswahl",
+    "languageNames": {
+      "cs": "CZ",
+      "en": "EN",
+      "de": "DE"
+    }
+  },
+  "nav": {
+    "ariaLabel": "Hauptnavigation",
+    "services": "Unsere Leistungen",
+    "process": "So funktioniert es",
+    "benefits": "Vorteile & ESG",
+    "contact": "Kapazitäten anfragen",
+    "mobileToggleOpen": "Navigation öffnen",
+    "mobileToggleClose": "Navigation schließen"
+  },
+  "hero": {
+    "titleLine1": "Fehlen Ihnen Produktionsmitarbeiter?",
+    "titleHighlight": "Schaffen Sie Freiraum",
+    "titleLine2": "mit externer Kapazität.",
+    "description": "STILO MONT ist Ihr zuverlässiger Partner für Produktionskooperation und Outsourcing manueller Prozesse. Wir übernehmen Montage, Komplettierung und Nacharbeit. Erhalten Sie stabile Leistung ohne Personalprobleme und versteckte HR-Kosten.",
+    "primaryCta": "Verfügbare Kapazität prüfen",
+    "secondaryCta": "Unsere Leistungen",
+    "imageAlt": "Produktionsmitarbeiter bei der Arbeit",
+    "badgeTop": "Überwachter Betrieb",
+    "badgeBottom": "Stabile Output-Qualität"
+  },
+  "services": {
+    "heading": "Unsere Leistungen: Welche Prozesse wir übernehmen",
+    "mobileHint": "Wischen Sie und wählen Sie eine Leistung:",
+    "sliderAriaLabel": "Leistungsübersicht",
+    "dotAriaLabel": "Zu Leistung {index} wechseln",
+    "keyBenefitsHeading": "Wesentliche Vorteile dieser Zusammenarbeit",
+    "items": [
+      {
+        "id": "montage",
+        "iconClass": "fa-solid fa-screwdriver-wrench",
+        "title": "Manuelle Montage und Komplettierung",
+        "shortDesc": "Zusammenbau von Produkten aus mehreren Teilen.",
+        "fullDesc": "Professioneller Zusammenbau von Produkten aus mehreren Teilen, präzises Kleben, Falten und Nieten. Unsere Kapazität ist ideal für Automotive, Elektroindustrie, Spielwaren und Konsumgüter mit hohen Anforderungen an manuelle Präzision.",
+        "benefits": [
+          "Schnellere Endphase der Produktion",
+          "Strenge Qualitätskontrolle",
+          "Niedrigere Montagekosten"
+        ]
+      },
+      {
+        "id": "nacharbeit",
+        "iconClass": "fa-solid fa-magnifying-glass",
+        "title": "Nachbearbeitung und Rework",
+        "shortDesc": "Entgraten, Qualitätskontrolle und Sortierung.",
+        "fullDesc": "Detailliertes Entgraten von Kunststoffteilen, Entfernen von Graten nach dem Pressen, visuelle und mechanische Qualitätskontrolle sowie präzise Sortierung. Wir schützen Ihre Produktion vor Ausschuss und bereiten Teile für den nächsten Schritt vor.",
+        "benefits": [
+          "Gründliche Endkontrolle",
+          "Rettung wertvollen Materials",
+          "Entlastung Ihrer internen Techniker"
+        ]
+      },
+      {
+        "id": "verpackung",
+        "iconClass": "fa-solid fa-box-open",
+        "title": "Verpackung, Umpacken und Co-Packing",
+        "shortDesc": "Komplettierung von Geschenksets und Palettierung.",
+        "fullDesc": "Umfassende Verpackungsservices inklusive Komplettierung von Geschenk- und Promo-Packs, Einlegen von Anleitungen und Flyern, Etikettierung sowie finale Vorbereitung für sichere Palettierung und Versand.",
+        "benefits": [
+          "Schnelle Abwicklung von Marketingkampagnen",
+          "Einheitliche Verpackungsqualität",
+          "Logistische Einsatzbereitschaft"
+        ]
+      }
+    ]
+  },
+  "process": {
+    "heading": "So läuft die Zusammenarbeit ab (Schritt für Schritt)",
+    "description": "Unser Prozess ist darauf ausgelegt, Ihr Unternehmen maximal zu entlasten. Wir arbeiten in dedizierten, überwachten Räumen unter strenger Qualitätskontrolle.",
+    "steps": [
+      {
+        "num": "1",
+        "title": "Analyse und Bemusterung",
+        "desc": "Senden Sie uns Referenzmuster, Zeichnungen und Qualitätsanforderungen. Wir erstellen schnell eine Zeitstudie und kalkulieren transparent pro Stück."
+      },
+      {
+        "num": "2",
+        "title": "Logistik",
+        "desc": "Sie liefern Material oder Halbfertigprodukte in unsere gesicherten externen Räumlichkeiten. Bei Bedarf organisieren wir den Transport mit unserer eigenen Flotte."
+      },
+      {
+        "num": "3",
+        "title": "Bearbeitung und Kontrolle",
+        "desc": "Unsere dedizierten Operatoren erledigen die vereinbarte Arbeit termingerecht. Interne Prüfer überwachen kontinuierlich Qualität, Standards und Abläufe."
+      },
+      {
+        "num": "4",
+        "title": "Versand des fertigen Ergebnisses",
+        "desc": "Wir senden präzise bearbeitete, geprüfte und sicher verpackte Ergebnisse zurück an Ihre Produktionslinie oder nach Vereinbarung direkt an Ihren Endkunden."
+      }
+    ]
+  },
+  "benefits": {
+    "heading": "Warum STILO MONT als Kooperationspartner",
+    "description": "Wir sind keine Personalagentur. Wir liefern keine Köpfe, sondern fertige Ergebnisse. Das sind die wichtigsten Gründe, warum unser Outsourcing-Modell Ihre Effizienz verbessert.",
+    "card1": {
+      "title": "Stabilität und null Fluktuation",
+      "description": "Unser Operator-Team ist stabil. Produktionsausfälle durch Krankenstand oder Mitarbeiterwechsel werden minimiert."
+    },
+    "card2": {
+      "title": "Bezahlung nach Ergebnis, nicht nach Zeit",
+      "description": "Sie zahlen nur den vereinbarten Preis pro fertigem Stück oder erfüllter Norm. Kein Aufwand für Lohnnebenkosten, Urlaub oder teure Stillstände."
+    },
+    "card3": {
+      "title": "Sofortige Skalierbarkeit",
+      "description": "Kapazitätsspitze oder großer Auftrag? Wir können schnell ein dediziertes Team für Ihr Projekt bereitstellen, schulen und einsetzen."
+    },
+    "esgTitle": "Qualitätsgarantie und gesellschaftliche Verantwortung (ESG)",
+    "esgDescription": "Wir legen Wert auf Präzision, Schutz Ihres Know-hows und Sicherheit anvertrauter Werte. Unsere Betriebe erfüllen strenge Sicherheitsstandards.",
+    "esgHighlight": "Bonus für Ihre Unternehmensziele:",
+    "esgText": "Mit STILO MONT gewinnen Sie einen verlässlichen Lieferanten und starken Partner für CSR- und ESG-Berichtspflichten."
+  },
+  "contact": {
+    "heading": "Suchen Sie einen zuverlässigen Partner?",
+    "description": "Lassen Sie Ihre Aufträge nicht stehen. Kontaktieren Sie uns und erfahren Sie, welche Kooperationsmöglichkeiten wir Ihrem Unternehmen anbieten können.",
+    "mainContact": "Hauptkontakt",
+    "executives": "Geschäftsführer",
+    "companyLabel": "Firmendaten",
+    "companyIdLabel": "Unternehmens-ID",
+    "vatIdLabel": "USt-IdNr."
+  },
+  "footer": {
+    "text": "© 2026 STILO MONT s.r.o. Alle Rechte vorbehalten. | Zuverlässiger Partner für Produktionskooperation."
+  }
+}
