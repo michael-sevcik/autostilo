@@ -132,7 +132,16 @@ async function main() {
         canonicalUrl,
         ogUrl: canonicalUrl
       },
-      localeDataJson: JSON.stringify(localeData).replace(/</g, '\\u003c'),
+      localeDataJson: JSON.stringify({
+        services: {
+          dotAriaLabel: localeData.services.dotAriaLabel,
+          keyBenefitsHeading: localeData.services.keyBenefitsHeading,
+          items: localeData.services.items
+        },
+        process: {
+          steps: localeData.process.steps
+        }
+      }).replace(/</g, '\\u003c'),
       hreflangLinks: buildHreflangs(),
       ogLocaleAlternates: buildOgAlternates(langCode),
       languageSwitcherDesktop: buildLanguageMenu(langCode, localeData),
