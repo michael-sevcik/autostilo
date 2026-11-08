@@ -14,7 +14,7 @@ We removed the heavy browser-based Tailwind CDN script to serve only the CSS cla
    - `cs/index.html`
    - `en/index.html`
    - `de/index.html`
-6. `index.html` at repository root redirects to Czech (`/cs/`) as the default language.
+6. `index.html` at repository root redirects to the visitor's preferred supported language, falling back to English (`/en/`).
 
 ## What to do when you make changes to `index.html`
 
