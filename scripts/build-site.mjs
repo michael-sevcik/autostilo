@@ -77,7 +77,8 @@ function buildHreflangs() {
   const links = languages
     .map(({ code, url }) => `<link rel="alternate" hreflang="${code}" href="${url}">`)
     .join('\n    ');
-  return `${links}\n    <link rel="alternate" hreflang="x-default" href="${languages[0].url}">`;
+  const defaultLanguage = languages.find(({ code }) => code === 'en');
+  return `${links}\n    <link rel="alternate" hreflang="x-default" href="${defaultLanguage.url}">`;
 }
 
 function buildOgAlternates(currentLang) {
@@ -160,7 +161,6 @@ async function main() {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="canonical" href="https://stilomont.cz/en/">
   <title>STILO MONT</title>
 </head>
 <body>
